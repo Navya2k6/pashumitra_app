@@ -1,0 +1,23 @@
+
+{
+    "appTitle": "Pashumitra",
+    "welcomeMessage": "Welcome to Pashumitra",
+    "appSlogan": "Your personal AI assistant for modern farming.",
+    "getStartedButton": "Let's Get Started",
+    "homePageTitle": "Home Page",
+    "herdPageTitle": "My Herd Page",
+    "aiChatPageTitle": "AI Chat Page",
+    "profilePageTitle": "Profile Page",
+    "weatherBoxTitle": "Today's Weather",
+    "today": "Today",
+    "irrigationMessage": "Today is a Good Day For Irrigation",
+    "manageFarmTitle": "Animal Recognition",
+    "takeAPicture": "Take a picture",
+    "breedIdentification": "Breed Identification",
+    "getAdvice": "Get Advice",
+    "takePictureButton": "Take a Picture of the Animal",
+    "navHome": "Home",
+    "navHerd": "Herd",
+    "navAiChat": "AI Chat",
+    "navProfile": "Profile"
+}

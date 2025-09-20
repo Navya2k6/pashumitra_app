@@ -1,0 +1,22 @@
+{
+    "appTitle": "पशुमित्र",
+    "welcomeMessage": "पशुमित्र में आपका स्वागत है",
+    "appSlogan": "आधुनिक खेती के लिए आपका व्यक्तिगत एआई सहायक।",
+    "getStartedButton": "शुरू हो जाओ",
+    "homePageTitle": "होम पेज",
+    "herdPageTitle": "मेरा झुंड पेज",
+    "aiChatPageTitle": "एआई चैट पेज",
+    "profilePageTitle": "प्रोफ़ाइल पेज",
+    "weatherBoxTitle": "आज का मौसम",
+    "today": "आज",
+    "irrigationMessage": "आज सिंचाई के लिए अच्छा दिन है",
+    "manageFarmTitle": "अपने खेत का प्रबंधन करें",
+    "takeAPicture": "एक तस्वीर लो",
+    "breedIdentification": "नस्ल की पहचान",
+    "getAdvice": "सलाह ले",
+    "takePictureButton": "जानवर की तस्वीर लें",
+    "navHome": "होम",
+    "navHerd": "झुंड",
+    "navAiChat": "एआई चैट",
+    "navProfile": "प्रोफ़ाइल"
+}

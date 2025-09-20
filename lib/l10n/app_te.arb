@@ -1,0 +1,22 @@
+{
+    "appTitle": "పశుమిత్ర",
+    "welcomeMessage": "పశుమిత్రకు స్వాగతం",
+    "appSlogan": "ఆధునిక వ్యవసాయం కోసం మీ వ్యక్తిగత AI సహాయకుడు.",
+    "getStartedButton": "ప్రారంభిద్దాం",
+    "homePageTitle": "హోమ్ పేజీ",
+    "herdPageTitle": "నా పశువుల మంద",
+    "aiChatPageTitle": "AI చాట్ పేజీ",
+    "profilePageTitle": "ప్రొఫైల్ పేజీ",
+    "weatherBoxTitle": "నేటి వాతావరణం",
+    "today": "నేడు",
+    "irrigationMessage": "ఈ రోజు నీటిపారుదలకు మంచి రోజు",
+    "manageFarmTitle": "మీ వ్యవసాయ క్షేత్రాన్ని నిర్వహించండి",
+    "takeAPicture": "చిత్రం తీయండి",
+    "breedIdentification": "జాతి గుర్తింపు",
+    "getAdvice": "సలహా పొందండి",
+    "takePictureButton": "పశువు యొక్క చిత్రం తీయండి",
+    "navHome": "హోమ్",
+    "navHerd": "పాడి",
+    "navAiChat": "AI చాట్",
+    "navProfile": "ప్రొఫైల్"
+}
