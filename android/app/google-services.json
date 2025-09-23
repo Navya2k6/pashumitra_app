@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "144845525749",
+    "project_id": "pashumitra-app-e9e4c",
+    "storage_bucket": "pashumitra-app-e9e4c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:144845525749:android:7928a82661cb29ca62ebbc",
+        "android_client_info": {
+          "package_name": "com.example.pashumitra_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDv_VqUwQwS7s6f5bHfy0HKx13Ge_ZbP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:144845525749:android:87ac37a0a37d66aa62ebbc",
+        "android_client_info": {
+          "package_name": "com.example.pashumitra_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDv_VqUwQwS7s6f5bHfy0HKx13Ge_ZbP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -5,7 +5,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // For formatting the date
 import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 import 'dart:ui';
+import 'api_keys.dart';
+
+import 'ai_chat_page.dart';
 // Add this import at the top of lib/menu_page.dart
 import 'package:pashumitra_app/generated/app_localizations.dart'; // Ensure package name is correct
 import 'herd_page.dart';
@@ -13,6 +17,10 @@ import 'dart:convert'; // For handling JSON data
 import 'package:geolocator/geolocator.dart'; // For location
 import 'package:http/http.dart' as http; // For API calls
 import 'package:image_picker/image_picker.dart'; // For camera
+import 'profile_page.dart';
+import 'notifications_page.dart';
+// ignore: unused_import
+import 'auth_provider.dart';
 
 // Your color constants
 const Color kPrimaryColor = Color.fromARGB(255, 1, 1, 1);
@@ -36,8 +44,7 @@ class _MainScreenState extends State<MainScreen> {
   String? _errorMessage;
 
   // IMPORTANT: PASTE YOUR FREE API KEY FROM OPENWEATHERMAP HERE
-  final String _apiKey = '49d9056bf22c3c126dcd239dc5c683d2';
-
+  final String _apiKey = ApiKeys.openWeatherMap; // Uses the key from the new file
   @override
   void initState() {
     super.initState();
@@ -198,93 +205,139 @@ class _MainScreenState extends State<MainScreen> {
       buildHomePage(context),
       const HerdPage(),
       // UPDATED: Placeholder titles now use localization keys
-      PlaceholderPage(pageName: localizations.herdPageTitle, icon: Icons.pets),
-      PlaceholderPage(pageName: localizations.aiChatPageTitle, icon: Icons.chat_bubble),
-      PlaceholderPage(pageName: localizations.profilePageTitle, icon: Icons.person),
+      const AIChatPage(),
+      const ProfilePage(),
+      
     ];
 
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/images/background2.jpg'),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        extendBody: true,
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
+   return Container(
+  // Background image
+  decoration: const BoxDecoration(
+    image: DecorationImage(
+      image: AssetImage('assets/images/imgbg.jpg'),
+      fit: BoxFit.cover,
+    ),
+  ),
+ // Transparent overlay keeps Scaffold visible
+        child: Scaffold(
           backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: const Icon(Icons.menu, color: Colors.black54),
-          // UPDATED: App title now uses localization key
-          title: Text(localizations.appTitle,
-              style: const TextStyle(
-                  color: Colors.black87,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20)),
-          actions: [
-            IconButton(
-                icon: const Icon(Icons.account_circle,
-                    color: Colors.black54, size: 28),
-                onPressed: () {}),
-            const SizedBox(width: 8),
-          ],
-          flexibleSpace: ClipRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Colors.lightBlue.shade200.withOpacity(0.7),
-                      Colors.lime.shade200.withOpacity(0.7),
+          extendBody: true,
+          extendBodyBehindAppBar: true,
+
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            automaticallyImplyLeading: false,
+            title: Text(localizations.appTitle,
+                style: const TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20)),
+            actions: [
+               Consumer<AuthProvider>(
+            builder: (context, auth, child) {
+              return Stack(
+                alignment: Alignment.center,
+                children: [
+              IconButton(
+                  icon: const Icon(Icons.notifications,
+                      color: Color.fromARGB(137, 0, 0, 0), size: 38),
+                  onPressed: () {
+                     auth.markNotificationsAsRead();
+                     Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const NotificationsPage(),
+                      ),
+                    );
+                  }),
+                  if (auth.hasUnreadNotifications)
+                    Positioned(
+                      top: 10,
+                      right: 10,
+                      child: Container(
+                        width: 8,
+                        height: 8,
+                        decoration: const BoxDecoration(
+                          color: Colors.red,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                    ),
+                ],
+              );
+            }
+          ),
+              const SizedBox(width: 8),
+            ],
+            flexibleSpace: ClipRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.lightBlue.shade200.withOpacity(0.7),
+                        Colors.lime.shade200.withOpacity(0.7),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          body: IndexedStack(index: _selectedIndex, children: pages),
+          floatingActionButton: FloatingActionButton(
+            onPressed: _showImageSourceDialog,
+            backgroundColor: const Color.fromARGB(255, 1, 68, 37),
+            child: const Icon(Icons.camera_alt, color: Colors.white),
+          ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+          bottomNavigationBar: BottomAppBar(
+            shape: const CircularNotchedRectangle(),
+            notchMargin: 8.0,
+            color: Colors.transparent,
+            elevation: 0,
+            child: ClipRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                child: Container(
+                  height: 60.0,
+                  decoration:
+                      BoxDecoration(color: Colors.white.withOpacity(0.2)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      _buildNavItem(
+                          icon: Icons.home_rounded,
+                          index: 0,
+                          label: localizations.navHome),
+                      _buildNavItem(
+                          icon: Icons.pets,
+                          index: 1,
+                          label: localizations.navHerd),
+                      const SizedBox(width: 40),
+                      _buildNavItem(
+                          icon: Icons.chat_bubble,
+                          index: 2,
+                          label: localizations.navAiChat),
+                      _buildNavItem(
+                          icon: Icons.person,
+                          index: 3,
+                          label: localizations.navProfile),
                     ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
                   ),
                 ),
               ),
             ),
           ),
         ),
-        body: IndexedStack(index: _selectedIndex, children: pages),
-        floatingActionButton: FloatingActionButton(
-          onPressed: _showImageSourceDialog, // This now shows the choice dialog
-          backgroundColor: const Color.fromARGB(255, 1, 68, 37),
-          child: const Icon(Icons.camera_alt, color: Colors.white),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: BottomAppBar(
-          shape: const CircularNotchedRectangle(),
-          notchMargin: 8.0,
-          color: Colors.transparent,
-          elevation: 0,
-          child: ClipRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-              child: Container(
-                height: 60.0,
-                decoration:
-                    BoxDecoration(color: Colors.white.withOpacity(0.2)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    _buildNavItem(icon: Icons.home_rounded, index: 0, label: localizations.navHome),
-                    _buildNavItem(icon: Icons.pets, index: 1, label: localizations.navHerd),
-                    const SizedBox(width: 40),
-                    _buildNavItem(
-                        icon: Icons.chat_bubble, index: 2, label: localizations.navAiChat),
-                    _buildNavItem(icon: Icons.person, index: 3, label: localizations.navProfile),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
+      );
+
+
   }
 
   Widget _buildNavItem(
@@ -343,6 +396,7 @@ class _MainScreenState extends State<MainScreen> {
         filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
         child: Container(
           padding: const EdgeInsets.all(20.0),
+          height: 196,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
@@ -388,22 +442,22 @@ class _MainScreenState extends State<MainScreen> {
                                 ),
                                 Text(
                                   '${_weatherData?['main']['temp'].round() ?? ''}°C',
-                                  style: const TextStyle(color: Colors.black87, fontSize: 56, fontWeight: FontWeight.w900, height: 1.2),
+                                  style: const TextStyle(color: Colors.black87, fontSize: 56, fontWeight: FontWeight.w900, height: 1.4),
                                 ),
                               ],
                             ),
                             const Spacer(),
                             Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
+                              padding: const EdgeInsets.only(top: 8),
                               child: _getWeatherIcon(_weatherData?['weather'][0]['main']),
                             ),
                           ],
                         ),
                         const SizedBox(height: 10),
-                        Text(
-                          localizations.irrigationMessage,
-                          style: TextStyle(color: Colors.black.withOpacity(0.6), fontSize: 14),
-                        ),
+                        // Text(
+                        //   localizations.irrigationMessage,
+                        //   style: TextStyle(color: Colors.black.withOpacity(0.6), fontSize: 14),
+                        // ),
                       ],
                     ),
         ),
@@ -489,48 +543,53 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  // --- NEW WIDGET for the emergency message ---
-  Widget _buildEmergencyBox(BuildContext context) {
-    // Add a localization key for this message in your .arb files if you want it to be translated
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(16),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-        child: Container(
-          padding: const EdgeInsets.all(16.0),
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.2), // Subtle background color
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.white.withOpacity(0.3)),
+// --- NEW WIDGET for the emergency message ---
+Widget _buildEmergencyBox(BuildContext context) {
+  return ClipRRect(
+    borderRadius: BorderRadius.circular(16),
+    child: BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8), // slightly stronger blur
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.lightBlue.shade200.withOpacity(0.4), // sky blue
+              Colors.white.withOpacity(0.3), // whitish
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
-           // UPDATED: Using RichText to highlight the phone number
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: Colors.white.withOpacity(0.3)),
+        ),
         child: RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
-            // This is the default style for the normal text
             style: const TextStyle(
               color: Color.fromARGB(255, 41, 40, 40),
               fontSize: 14,
               height: 1.6,
             ),
-          children: <TextSpan>[
-              const TextSpan(text: 'If you need to report a situation involving an animal in immediate danger, please call our emergency number : '),
+            children: <TextSpan>[
+              const TextSpan(
+                  text:
+                      'Animal Emergency? Call Our helpline for immediate help. If an animal is injured, Stay with it until help arrives. Emergency Number:  '),
               TextSpan(
-                text: ' 📞 (0) 9820122602',
-                // This is the highlight style for the phone number
+                text: ' 📞 9820122602',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.blue.shade900,
                 ),
               ),
-              const TextSpan(text: '. If an animal is injured, please remain with the animal until help is secured.'),
             ],
           ),
         ),
-        ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 }
 
 // PlaceholderPage widget remains the same

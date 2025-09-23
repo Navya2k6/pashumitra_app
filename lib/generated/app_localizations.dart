@@ -160,12 +160,6 @@ abstract class AppLocalizations {
   /// **'Today'**
   String get today;
 
-  /// No description provided for @irrigationMessage.
-  ///
-  /// In en, this message translates to:
-  /// **'Today is a Good Day For Irrigation'**
-  String get irrigationMessage;
-
   /// No description provided for @manageFarmTitle.
   ///
   /// In en, this message translates to:
@@ -219,6 +213,228 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get navProfile;
+
+  /// No description provided for @emergencyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Animal Emergency? Call Our helpline for immediate help. If an animal is injured, Stay eith it until help arrives. Emergency Number :📞 9820122602'**
+  String get emergencyMessage;
+
+  /// No description provided for @litresPerDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Litres/day'**
+  String get litresPerDay;
+
+  /// No description provided for @animalNameLakshmi.
+  ///
+  /// In en, this message translates to:
+  /// **'Lakshmi'**
+  String get animalNameLakshmi;
+
+  /// No description provided for @animalBreedHolsteinFriesian.
+  ///
+  /// In en, this message translates to:
+  /// **'Holstein Friesian'**
+  String get animalBreedHolsteinFriesian;
+
+  /// No description provided for @animalMilkLakshmi.
+  ///
+  /// In en, this message translates to:
+  /// **'25.5'**
+  String get animalMilkLakshmi;
+
+  /// No description provided for @animalNameGanga.
+  ///
+  /// In en, this message translates to:
+  /// **'Ganga'**
+  String get animalNameGanga;
+
+  /// No description provided for @animalBreedJersey.
+  ///
+  /// In en, this message translates to:
+  /// **'Jersey'**
+  String get animalBreedJersey;
+
+  /// No description provided for @animalMilkGanga.
+  ///
+  /// In en, this message translates to:
+  /// **'22.0'**
+  String get animalMilkGanga;
+
+  /// No description provided for @animalNameYamuna.
+  ///
+  /// In en, this message translates to:
+  /// **'Yamuna'**
+  String get animalNameYamuna;
+
+  /// No description provided for @animalBreedMurrahBuffalo.
+  ///
+  /// In en, this message translates to:
+  /// **'Murrah Buffalo'**
+  String get animalBreedMurrahBuffalo;
+
+  /// No description provided for @animalMilkYamuna.
+  ///
+  /// In en, this message translates to:
+  /// **'18.7'**
+  String get animalMilkYamuna;
+
+  /// No description provided for @profileView.
+  ///
+  /// In en, this message translates to:
+  /// **'View Profile'**
+  String get profileView;
+
+  /// No description provided for @preferences.
+  ///
+  /// In en, this message translates to:
+  /// **'Preferences'**
+  String get preferences;
+
+  /// No description provided for @changeLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Language'**
+  String get changeLanguage;
+
+  /// No description provided for @darkMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark Mode'**
+  String get darkMode;
+
+  /// No description provided for @support.
+  ///
+  /// In en, this message translates to:
+  /// **'Support'**
+  String get support;
+
+  /// No description provided for @querySupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Query Support'**
+  String get querySupport;
+
+  /// No description provided for @aboutUs.
+  ///
+  /// In en, this message translates to:
+  /// **'About Us'**
+  String get aboutUs;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// No description provided for @loggedOutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Account'**
+  String get loggedOutTitle;
+
+  /// No description provided for @loggedOutSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in to access your farm details, herd management, and personalized advice.'**
+  String get loggedOutSubtitle;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @myProfileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My Profile'**
+  String get myProfileTitle;
+
+  /// No description provided for @editProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get editProfile;
+
+  /// No description provided for @saveProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get saveProfile;
+
+  /// No description provided for @profileNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get profileNameLabel;
+
+  /// No description provided for @profileAgeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Age'**
+  String get profileAgeLabel;
+
+  /// No description provided for @profilePhoneLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number'**
+  String get profilePhoneLabel;
+
+  /// No description provided for @chatWelcomeMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Hello! I am Pashumitra, your AI assistant. How can I help you with your livestock today?'**
+  String get chatWelcomeMessage;
+
+  /// No description provided for @chatError.
+  ///
+  /// In en, this message translates to:
+  /// **'Sorry, an error occurred. Please try again.'**
+  String get chatError;
+
+  /// No description provided for @notificationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationsTitle;
+
+  /// No description provided for @vaccinationReminderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vaccination Reminder'**
+  String get vaccinationReminderTitle;
+
+  /// No description provided for @vaccinationReminderMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Your cow, Lakshmi, is due for her annual vaccination on October 5th.'**
+  String get vaccinationReminderMsg;
+
+  /// No description provided for @healthCheckupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Health Checkup'**
+  String get healthCheckupTitle;
+
+  /// No description provided for @healthCheckupMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule a health checkup for your goat. It has been 6 months since the last one.'**
+  String get healthCheckupMsg;
+
+  /// No description provided for @newArticleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New Article Available'**
+  String get newArticleTitle;
+
+  /// No description provided for @newArticleMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Read our latest article: \"Tips for managing livestock during the winter season.\"'**
+  String get newArticleMsg;
 }
 
 class _AppLocalizationsDelegate

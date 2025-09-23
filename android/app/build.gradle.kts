@@ -1,8 +1,25 @@
 plugins {
     id("com.android.application")
+    // START: FlutterFire Configuration
+    id("com.google.gms.google-services")
+    // END: FlutterFire Configuration
     id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+}
+dependencies {
+  // ...
+
+  // Import the Firebase BoM
+  implementation(platform("com.google.firebase:firebase-bom:34.3.0"))
+  implementation("com.google.firebase:firebase-auth:22.3.1")
+
+  // When using the BoM, you don't specify versions in Firebase library dependencies
+
+  // Add the dependency for the Firebase SDK for Google Analytics
+  implementation("com.google.firebase:firebase-analytics")
+  
+  implementation("com.google.firebase:firebase-firestore")
 }
 
 android {
